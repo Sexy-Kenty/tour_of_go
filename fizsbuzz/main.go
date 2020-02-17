@@ -2,26 +2,20 @@ package main
 
 import (
 	"fmt"
-	"strconv"
+	"math"
 )
 
-func main() {
-	for i := 0; i <= 100; i++ {
-		fmt.Println(fizzbuzz(i))
+func pow(x, n, lim float64) float64 {
+	// 変数vはifのスコープ内でのみ有効
+	if v := math.Pow(x, n); v < lim {
+		return v
 	}
+	return lim
 }
 
-func fizzbuzz(i int) string {
-	if i%15 == 0 {
-		return "FizzBuzz"
-	}
-
-	if i%5 == 0 {
-		return "Buzz"
-	}
-
-	if i%3 == 0 {
-		return "Fizz"
-	}
-	return strconv.Itoa(i)
+func main() {
+	fmt.Println(
+		pow(4, 4, 15),
+		pow(2, 4, 20),
+	)
 }
