@@ -2,21 +2,22 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"time"
 )
 
-func pow(x, n, lim float64) float64 {
-	if v := math.Pow(x, n); v < lim {
-		return v
-	} else {
-		fmt.Printf("%g >= %g\n", v, lim)
-	}
-	return lim
-}
-
 func main() {
-	fmt.Println(
-		pow(2, 5, 15),
-		pow(2, 4, 20),
-	)
+	fmt.Println("when is Saturday?")
+	today := time.Now().Weekday()
+	fmt.Println(today)
+	switch time.Saturday {
+	case today + 0:
+		fmt.Println("Today.")
+	case today + 1:
+		fmt.Println("Tomorrow")
+	case today + 2:
+		fmt.Println("In two days")
+	default:
+		fmt.Println("Too far away")
+	}
+
 }
