@@ -2,10 +2,14 @@ package main
 
 import "fmt"
 
-// defer へ渡した関数の実行を、呼び出し元の関数の終わり(returnする)まで遅延させる。
-// defer へ渡した関数の引数は、すぐに評価されるが、その関数自体は呼び出し元の関数がreturnするまで実行されない。
+// defer へ渡した関数が複数ある場合、その呼び出しはスタック( stack )されます。
+// 呼び出し元の関数がreturnするとき、 defer へ渡した関数は LIFO(last-in-first-out) の順番で実行される。
 func main() {
-	defer fmt.Println("World!")
+	fmt.Println("counting")
 
-	fmt.Println("Hello")
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
 }
